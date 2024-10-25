@@ -1,4 +1,3 @@
--- Insert initial data into petPet table
 INSERT INTO petPet VALUES
     ("Fluffy", "Harold", "cat", "F", "1993-02-04", NULL),
     ("Claws", "Gwen", "cat", "M", "1994-03-17", NULL),
@@ -10,7 +9,6 @@ INSERT INTO petPet VALUES
     ("Slim", "Benny", "snake", "M", "1996-04-29", NULL),
     ('Puffball', 'Diane', 'hamster', 'F', '1999-03-30', NULL);
 
--- Insert initial data into petEvent table
 INSERT INTO petEvent VALUES
     ("Fluffy", "1995-05-15", "litter", "4 kittens, 3 female, 1 male"),
     ("Buffy", "1993-06-23", "litter", "5 puppies, 2 female, 3 male"),
@@ -24,26 +22,20 @@ INSERT INTO petEvent VALUES
     ("Claws", "1998-03-17", "birthday", "Gave him a new flea collar"),
     ("Whistler", "1998-12-09", "birthday", "First birthday");
 
--- Insert new event for Fluffy
 INSERT INTO petEvent (petname, eventdate, eventtype, remark)
 VALUES ('Fluffy', '2020-10-15', 'vet', 'antibiotics');
 
--- Ensure Hammy exists in petPet, then add event
 INSERT INTO petPet (petname, owner, species, gender, birth)
 VALUES ('Hammy', 'Diane', 'hamster', 'M', '2010-10-30');
 
 INSERT INTO petEvent (petname, eventdate, eventtype, remark)
 VALUES ('Hammy', '2020-10-15', 'vet', 'antibiotics');
 
--- Update Fluffy's record to reflect the 5 kittens (2 male)
 UPDATE petPet SET owner = CONCAT(owner, ', had 5 kittens, 2 male') WHERE petname = 'Fluffy';
 
--- Add event for Claws’ injury
 INSERT INTO petEvent (petname, eventdate, eventtype, remark)
 VALUES ('Claws', '1997-08-03', 'injury', 'broke rib');
 
--- Update Puffball’s death date
 UPDATE petPet SET death = '2020-09-01' WHERE petname = 'Puffball';
 
--- Delete Harold's dog (if it's Buffy, for example)
 DELETE FROM petPet WHERE owner = 'Harold' AND petname = 'Buffy';
